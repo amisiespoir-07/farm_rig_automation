@@ -432,7 +432,10 @@ export default function Home() {
               <div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-4">Technical Support</h3>
                 <p className="text-gray-600 mb-4">Need help with existing systems? Our technical team is here to assist you.</p>
-                <button className="flex items-center text-green-600 hover:text-green-700 font-medium">
+                <button 
+                  onClick={() => window.location.href = '/contact#faq'}
+                  className="flex items-center text-green-600 hover:text-green-700 font-medium cursor-pointer"
+                >
                   View FAQ & Maintenance Guides
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </button>
