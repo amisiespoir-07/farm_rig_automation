@@ -2,6 +2,17 @@
   "name": "farm_rig_auto",
   "version": "0.1.0",
   "private": true,
+  "description": "This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).",
+  "homepage": "https://github.com/amisiespoir-07/farm_rig_automation#readme",
+  "bugs": {
+    "url": "https://github.com/amisiespoir-07/farm_rig_automation/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amisiespoir-07/farm_rig_automation.git"
+  },
+  "license": "ISC",
+  "author": "",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

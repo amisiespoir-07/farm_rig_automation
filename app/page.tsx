@@ -54,19 +54,19 @@ const slides = [
 
 const services = [
   {
-    title: "Hydrological Surveying",
-    description: "Comprehensive GIS mapping and water table analysis to identify sustainable water sources for your agricultural operations.",
-    features: ["Terrain Analysis", "Water Table Mapping", "Source Identification", "Flow Rate Assessment"],
+    title: "Water Resources Assessment",
+    description: "Professional hydrological surveys, flood risk mapping, and sustainable water source identification using HEC-RAS and GIS technology.",
+    features: ["GIS Water Table Mapping", "Flood Plain Analysis", "Watershed Management", "Borehole Siting"],
   },
   {
-    title: "Custom Irrigation Design",
-    description: "Tailored drip and sprinkler systems designed specifically for your farm's topography and crop requirements.",
-    features: ["Topography-Based Design", "Crop-Specific Solutions", "Automated Scheduling", "Water Conservation"],
+    title: "Smart Irrigation Systems",
+    description: "Data-driven irrigation solutions combining hydrological expertise with automation technology for 40%+ water savings.",
+    features: ["Precision Drip Systems", "Soil Moisture Monitoring", "Solar-Powered Pumps", "Mobile App Control"],
     },
   {
-    title: "Solar Consulting",
-    description: "Professional energy audits and solar capacity planning to power your farm operations sustainably.",
-    features: ["Energy Audits", "Capacity Planning", "System Design", "ROI Analysis"], 
+    title: "Solar Energy Solutions",
+    description: "Complete off-grid solar systems for irrigation, farm operations, and rural electrification with battery storage.",
+    features: ["Solar Water Pumps", "Farm Electrification", "Security Lighting", "Energy Audits"], 
   }
 ];
 
@@ -133,15 +133,14 @@ export default function Home() {
                 className="w-full h-full object-cover"
               />
               <div className="relative z-20 h-full flex items-center justify-center">
-                <div className="text-center text-white px-4 max-w-4xl">
+                <div className="text-center text-white px-4 max-w-5xl">
                   <div className="flex justify-center mb-6">
                     {slide.icon}
                   </div>
-                  <h1 className="text-4xl md:text-6xl font-bold mb-4">{slide.title}</h1>
-                  <h2 className="text-xl md:text-2xl mb-6 text-green-200">{slide.subtitle}</h2>
-                  <p className="text-lg md:text-xl mb-8 max-w-2xl mx-auto">{slide.description}</p>
+                  <h1 className="text-4xl md:text-6xl font-bold mb-4">Smart Water & Solar Solutions for Kenya & Sub-Saharan Agriculture</h1>
+                  <h2 className="text-xl md:text-2xl mb-8 text-green-200">Expert hydrological surveying, intelligent irrigation systems, and solar-powered solutions engineered for Kenya and Sub-Saharan Africa's diverse climate zones, from ASAL regions to highland farms</h2>
                   <button className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors">
-                    Get a Survey Today
+                    Get Free Consultation
                   </button>
                 </div>
               </div>
@@ -185,6 +184,158 @@ export default function Home() {
             <p className="text-xl text-gray-200 mb-6 transition-all duration-500">
               {slides[currentSlide].subTagline}
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Key Value Propositions Section */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="text-center p-6 bg-gradient-to-br from-green-50 to-blue-50 rounded-xl hover:shadow-lg transition-shadow">
+              <div className="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <CheckCircle className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="text-lg font-bold text-gray-900 mb-2">PhD Researcher</h3>
+              <p className="text-gray-600 text-sm">Intelligent Water Systems, Southeast University</p>
+            </div>
+            
+            <div className="text-center p-6 bg-gradient-to-br from-blue-50 to-green-50 rounded-xl hover:shadow-lg transition-shadow">
+              <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <CheckCircle className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="text-lg font-bold text-gray-900 mb-2">Presidential Task Force</h3>
+              <p className="text-gray-600 text-sm">Big-4 Water Security Initiative Member</p>
+            </div>
+            
+            <div className="text-center p-6 bg-gradient-to-br from-green-50 to-blue-50 rounded-xl hover:shadow-lg transition-shadow">
+              <div className="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <CheckCircle className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="text-lg font-bold text-gray-900 mb-2">Embassy-Certified</h3>
+              <p className="text-gray-600 text-sm">Technical Consultant (KESCA Focal Person)</p>
+            </div>
+            
+            <div className="text-center p-6 bg-gradient-to-br from-blue-50 to-green-50 rounded-xl hover:shadow-lg transition-shadow">
+              <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <CheckCircle className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="text-lg font-bold text-gray-900 mb-2">5+ Years Experience</h3>
+              <p className="text-gray-600 text-sm">Transforming Kenyan Agriculture</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Our Impact Section */}
+      <section className="py-20 bg-gradient-to-br from-gray-50 to-green-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Impact</h2>
+            <p className="text-xl text-gray-600">Real Projects, Real Results</p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-12">
+            {/* Project 1: Machakos County */}
+            <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300">
+              <div className="relative h-64 overflow-hidden">
+                <img
+                  src="/images/Image-25.png"
+                  alt="Machakos County Horticulture Farm"
+                  className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+                />
+                <div className="absolute top-4 left-4 bg-green-600 text-white px-4 py-2 rounded-lg font-bold">
+                  2023
+                </div>
+              </div>
+              <div className="p-8">
+                <h3 className="text-2xl font-bold text-gray-900 mb-3">Machakos County Horticulture Farm</h3>
+                <div className="mb-4">
+                  <h4 className="font-semibold text-gray-900 mb-2">Challenge:</h4>
+                  <p className="text-gray-600">5-acre vegetable farm facing water scarcity and high KPLC bills</p>
+                </div>
+                <div className="mb-4">
+                  <h4 className="font-semibold text-gray-900 mb-2">Solution:</h4>
+                  <p className="text-gray-600">Solar-powered drip irrigation with automated scheduling</p>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-gray-900 mb-3">Results:</h4>
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="bg-green-50 rounded-lg p-4 text-center">
+                      <p className="text-3xl font-bold text-green-600">55%</p>
+                      <p className="text-sm text-gray-600">Water usage reduction</p>
+                    </div>
+                    <div className="bg-blue-50 rounded-lg p-4 text-center">
+                      <p className="text-3xl font-bold text-blue-600">90%</p>
+                      <p className="text-sm text-gray-600">Energy cost decrease</p>
+                    </div>
+                    <div className="bg-yellow-50 rounded-lg p-4 text-center">
+                      <p className="text-3xl font-bold text-yellow-600">40%</p>
+                      <p className="text-sm text-gray-600">Crop yield increase</p>
+                    </div>
+                    <div className="bg-purple-50 rounded-lg p-4 text-center">
+                      <p className="text-3xl font-bold text-purple-600">18mo</p>
+                      <p className="text-sm text-gray-600">ROI achieved</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Project 2: Nyeri Tea Farm */}
+            <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300">
+              <div className="relative h-64 overflow-hidden">
+                <img
+                  src="/images/Image-26.png"
+                  alt="Nyeri Tea Farm Irrigation Automation"
+                  className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+                />
+                <div className="absolute top-4 left-4 bg-green-600 text-white px-4 py-2 rounded-lg font-bold">
+                  2024
+                </div>
+              </div>
+              <div className="p-8">
+                <h3 className="text-2xl font-bold text-gray-900 mb-3">Nyeri Tea Farm Irrigation Automation</h3>
+                <div className="mb-4">
+                  <h4 className="font-semibold text-gray-900 mb-2">Challenge:</h4>
+                  <p className="text-gray-600">50-acre tea plantation with manual irrigation inefficiencies</p>
+                </div>
+                <div className="mb-4">
+                  <h4 className="font-semibold text-gray-900 mb-2">Solution:</h4>
+                  <p className="text-gray-600">Smart irrigation system with soil moisture sensors and weather integration</p>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-gray-900 mb-3">Results:</h4>
+                  <ul className="space-y-3">
+                    <li className="flex items-start">
+                      <CheckCircle className="w-5 h-5 text-green-600 mr-3 mt-0.5 flex-shrink-0" />
+                      <span className="text-gray-700">Automated 12 irrigation zones</span>
+                    </li>
+                    <li className="flex items-start">
+                      <CheckCircle className="w-5 h-5 text-green-600 mr-3 mt-0.5 flex-shrink-0" />
+                      <span className="text-gray-700">45% water savings</span>
+                    </li>
+                    <li className="flex items-start">
+                      <CheckCircle className="w-5 h-5 text-green-600 mr-3 mt-0.5 flex-shrink-0" />
+                      <span className="text-gray-700">Remote monitoring via mobile app</span>
+                    </li>
+                    <li className="flex items-start">
+                      <CheckCircle className="w-5 h-5 text-green-600 mr-3 mt-0.5 flex-shrink-0" />
+                      <span className="text-gray-700">Labor cost reduction: KES 180,000/year</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="text-center mt-12">
+            <button 
+              onClick={() => window.location.href = '/contact'}
+              className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors"
+            >
+              Start Your Success Story
+            </button>
           </div>
         </div>
       </section>
@@ -377,32 +528,61 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Get In Touch</h2>
-            <p className="text-xl text-gray-600">Ready to automate your farm? Let's discuss your needs</p>
+            <p className="text-xl text-gray-600">Ready to transform your farm? Let's discuss your specific needs</p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-12">
             <div>
               <form className="space-y-6">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Name</label>
-                  <input type="text" className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent" />
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Name *</label>
+                  <input type="text" placeholder="Your full name" className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent" />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Phone</label>
-                  <input type="tel" className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent" />
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Phone *</label>
+                  <input type="tel" placeholder="e.g., +254 7XX XXX XXX" className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent" />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Farm Location</label>
-                  <input type="text" className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent" />
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Email *</label>
+                  <input type="email" placeholder="Your email address" className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent" />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Service of Interest</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Farm/Business Location *</label>
+                  <input type="text" placeholder="County and specific area (e.g., Machakos County, Katangi)" className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent" />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Size of Operation *</label>
                   <select className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent">
-                    <option>Hydrological Survey</option>
-                    <option>Irrigation Automation</option>
-                    <option>Solar Solutions</option>
-                    <option>Multiple Services</option>
+                    <option>Small-scale (&lt;2 acres)</option>
+                    <option>Medium (2-10 acres)</option>
+                    <option>Large (10-50 acres)</option>
+                    <option>Commercial (50+ acres)</option>
                   </select>
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Service of Interest *</label>
+                  <div className="space-y-2">
+                    <label className="flex items-center">
+                      <input type="checkbox" className="mr-2" />
+                      <span className="text-gray-700">Hydrological Survey & Water Assessment</span>
+                    </label>
+                    <label className="flex items-center">
+                      <input type="checkbox" className="mr-2" />
+                      <span className="text-gray-700">Smart Irrigation System Design</span>
+                    </label>
+                    <label className="flex items-center">
+                      <input type="checkbox" className="mr-2" />
+                      <span className="text-gray-700">Solar Water Pump Installation</span>
+                    </label>
+                    <label className="flex items-center">
+                      <input type="checkbox" className="mr-2" />
+                      <span className="text-gray-700">Flood Risk Assessment</span>
+                    </label>
+                  </div>
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Additional Message</label>
+                  <textarea rows={4} placeholder="Tell us about your current challenges, water sources, power situation, and goals..." className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"></textarea>
                 </div>
                 <button type="submit" className="w-full bg-green-600 hover:bg-green-700 text-white py-3 rounded-lg font-semibold transition-colors">
                   Submit Inquiry
@@ -416,16 +596,25 @@ export default function Home() {
                 <div className="space-y-4">
                   <div className="flex items-center text-gray-600">
                     <Phone className="w-5 h-5 mr-3 text-green-600" />
-                    <span>+1 (555) 123-4567</span>
+                    <span>+254 712 960 060</span>
                   </div>
                   <div className="flex items-center text-gray-600">
                     <Mail className="w-5 h-5 mr-3 text-green-600" />
-                    <span>info@farmautomation.com</span>
+                    <span>Cloudceedtech@yahoo.com</span>
                   </div>
                   <div className="flex items-center text-gray-600">
                     <MapPin className="w-5 h-5 mr-3 text-green-600" />
-                    <span>123 Agricultural Way, Farm City, FC 12345</span>
+                    <span>Nairobi, Kenya (Serving all counties)</span>
                   </div>
+                </div>
+              </div>
+
+              <div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-4">Business Hours</h3>
+                <div className="space-y-2 text-gray-600">
+                  <p>Monday - Friday: 8:00 AM - 5:00 PM EAT</p>
+                  <p>Saturday: 9:00 AM - 1:00 PM EAT</p>
+                  <p>Sunday: Closed (Emergency support available)</p>
                 </div>
               </div>
 
@@ -451,9 +640,9 @@ export default function Home() {
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="flex items-center space-x-2 mb-4 md:mb-0">
               <Droplets className="w-6 h-6 text-green-400" />
-              <span className="font-semibold">FarmAuto</span>
+              <span className="font-semibold">Cloudseed Technologies International Ltd</span>
             </div>
-            <p className="text-gray-400">© 2024 Farm Automation & Mechanization. All rights reserved.</p>
+            <p className="text-gray-400">© 2024 Cloudseed Technologies. All rights reserved.</p>
           </div>
         </div>
       </footer>

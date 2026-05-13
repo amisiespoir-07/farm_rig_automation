@@ -1,185 +1,113 @@
 'use client';
 
 import { useState } from 'react';
-import { Droplets, Sun, ArrowRight, CheckCircle, Star } from 'lucide-react';
+import { Droplets, Sun, CheckCircle, Star, Zap, Gauge, ShoppingCart } from 'lucide-react';
 import Navbar from '../../components/Navbar';
 
-const productCategories = [
-  {
-    category: "Automation Gear",
-    icon: <Droplets className="w-8 h-8 text-green-400" />,
-    description: "Advanced control systems and smart devices for automated farm management",
-    products: [
-      { 
-        name: "Smart Timers", 
-        description: "Programmable irrigation controllers with mobile app integration and weather-based scheduling",
-        features: ["Mobile App Control", "Weather Integration", "Multi-Zone Support", "Energy Efficient"],
-        price: "$299"
-      },
-      { 
-        name: "Soil Moisture Sensors", 
-        description: "Real-time soil monitoring and automated watering triggers with precision accuracy",
-        features: ["Real-time Monitoring", "Automated Triggers", "Precision Accuracy", "Wireless Connectivity"],
-        price: "$199"
-      },
-      { 
-        name: "Pump Controllers", 
-        description: "Automated pump systems with pressure regulation and remote monitoring capabilities",
-        features: ["Pressure Regulation", "Remote Monitoring", "Auto-Shutoff", "Energy Optimization"],
-        price: "$449"
-      }
-    ]
-  },
-  {
-    category: "Water Delivery",
-    icon: <Droplets className="w-8 h-8 text-blue-400" />,
-    description: "High-efficiency water transport and distribution systems for optimal irrigation",
-    products: [
-      { 
-        name: "HDPE Piping", 
-        description: "High-durability piping systems for efficient water transport with minimal friction loss",
-        features: ["UV Resistant", "High Durability", "Low Friction", "Easy Installation"],
-        price: "$2.49/ft"
-      },
-      { 
-        name: "Automated Valves", 
-        description: "Smart valve systems for precise flow control with remote operation capabilities",
-        features: ["Precise Control", "Remote Operation", "Leak Detection", "Auto-Cleaning"],
-        price: "$189"
-      },
-      { 
-        name: "Specialized Sprinklers", 
-        description: "Efficiency-optimized sprinkler heads for various crop types and field conditions",
-        features: ["Crop-Specific", "Water Efficiency", "Adjustable Patterns", "Low Maintenance"],
-        price: "$79"
-      }
-    ]
-  },
-  {
-    category: "Solar & Lighting",
-    icon: <Sun className="w-8 h-8 text-yellow-400" />,
-    description: "Sustainable energy solutions and lighting systems for farm operations",
-    products: [
-      { 
-        name: "Solar Floodlights", 
-        description: "High-intensity security lighting powered by solar energy with motion detection",
-        features: ["Motion Detection", "High Intensity", "Battery Backup", "Weatherproof"],
-        price: "$159"
-      },
-      { 
-        name: "Motion Sensor Lights", 
-        description: "Smart garden lighting with motion detection and adjustable sensitivity settings",
-        features: ["Motion Detection", "Adjustable Sensitivity", "LED Technology", "Solar Powered"],
-        price: "$89"
-      },
-      { 
-        name: "PV Panel Systems", 
-        description: "Complete solar panel installations for farm operations with battery storage",
-        features: ["Battery Storage", "Grid Tie Option", "Remote Monitoring", "25 Year Warranty"],
-        price: "From $2,999"
-      }
-    ]
-  }
-];
-
 export default function ProductsPage() {
-  const [expandedCategory, setExpandedCategory] = useState<number | null>(null);
+  const [selectedCategory, setSelectedCategory] = useState<string>('all');
+
+  const products = [
+    { id: 1, name: "Smart Irrigation Controller Pro", category: "control", description: "WiFi/4G enabled central control unit with weather-based automatic adjustment. Control up to 48 zones remotely.", features: ["48 Zone Control", "Weather Integration", "Mobile App", "Cloud Analytics"], price: "KES 150,000", image: "/images/Image-2.png", rating: 5 },
+    { id: 2, name: "Soil Moisture Sensor Kit", category: "control", description: "Professional capacitive sensors with real-time monitoring and 5-year solar-powered battery life.", features: ["Real-time Data", "Solar Powered", "Depth Specific", "Wireless"], price: "KES 35,000", image: "/images/Image-3.png", rating: 5 },
+    { id: 3, name: "Weather Station Complete", category: "control", description: "On-site microclimate monitoring with comprehensive data logging and cloud integration.", features: ["Full Sensors", "Cloud Storage", "Solar Powered", "API Access"], price: "KES 250,000", image: "/images/Image-4.png", rating: 5 },
+    { id: 4, name: "Basic Irrigation Timer", category: "control", description: "Affordable programmable controller for small to medium farms with essential automation features.", features: ["12 Zone Control", "LCD Display", "Battery Backup", "Easy Setup"], price: "KES 45,000", image: "/images/Image-5.png", rating: 4 },
+    { id: 5, name: "Premium Drip Irrigation Kit (1 Acre)", category: "irrigation", description: "Complete drip system with pressure-compensating drippers, UV-resistant HDPE piping, and filtration unit.", features: ["UV Resistant", "Fertigation Ready", "Complete Kit", "Easy Install"], price: "KES 180,000", image: "/images/Image-6.png", rating: 5 },
+    { id: 6, name: "Rotary Sprinkler System", category: "irrigation", description: "High-efficiency rotary sprinklers with 50m coverage radius. Ideal for large-scale operations.", features: ["50m Coverage", "Adjustable", "Low Pressure", "Durable"], price: "KES 120,000", image: "/images/Image-7.png", rating: 5 },
+    { id: 7, name: "Solar Water Pump 5000L/day", category: "irrigation", description: "Submersible solar pump with complete controller system. Perfect for boreholes up to 50m depth.", features: ["5000L/day", "50m Depth", "Solar Direct", "MPPT Controller"], price: "KES 180,000", image: "/images/Image-8.png", rating: 5 },
+    { id: 8, name: "Solar Water Pump 20000L/day", category: "irrigation", description: "High-capacity submersible pump for commercial farms. Includes battery backup and remote monitoring.", features: ["20000L/day", "100m Depth", "Battery Backup", "Remote Monitor"], price: "KES 450,000", image: "/images/Image-9.png", rating: 5 },
+    { id: 9, name: "Water Storage Tank 10,000L", category: "irrigation", description: "UV-stabilized polyethylene tank with inlet/outlet fittings and overflow system.", features: ["10,000L Capacity", "UV Stabilized", "Food Grade", "10 Year Warranty"], price: "KES 85,000", image: "/images/Image-10.png", rating: 4 },
+    { id: 10, name: "Sand Filter System", category: "irrigation", description: "Professional-grade sand filtration system for drip irrigation. Prevents clogging and extends system life.", features: ["Auto Backwash", "High Flow", "Corrosion Resistant", "Easy Maintenance"], price: "KES 65,000", image: "/images/Image-11.png", rating: 5 },
+    { id: 11, name: "Solar Home System 3kW", category: "solar", description: "Complete off-grid system with panels, inverter, and lithium batteries. Powers lights, TV, fridge, and small appliances.", features: ["3kW Output", "Lithium Battery", "Pure Sine Wave", "25yr Warranty"], price: "KES 350,000", image: "/images/Image-12.png", rating: 5 },
+    { id: 12, name: "Solar Home System 5kW", category: "solar", description: "Mid-range system for farm operations. Includes expandable battery bank and hybrid inverter.", features: ["5kW Output", "Expandable", "Hybrid Inverter", "Remote Monitor"], price: "KES 550,000", image: "/images/Image-13.png", rating: 5 },
+    { id: 13, name: "Solar Farm System 10kW", category: "solar", description: "Commercial-grade system for processing facilities, cold storage, and heavy machinery.", features: ["10kW Output", "3-Phase", "Grid Tie Option", "Professional Install"], price: "KES 850,000", image: "/images/Image-14.png", rating: 5 },
+    { id: 14, name: "Solar Floodlight 100W", category: "solar", description: "High-intensity LED floodlight with motion sensor and 3-day battery autonomy.", features: ["100W LED", "Motion Sensor", "3 Day Battery", "Weatherproof IP66"], price: "KES 25,000", image: "/images/Image-15.png", rating: 5 },
+    { id: 15, name: "Solar Street Light 60W", category: "solar", description: "All-in-one solar street light with dusk-to-dawn sensor. Perfect for farm pathways.", features: ["60W LED", "Auto On/Off", "5 Day Battery", "Easy Install"], price: "KES 18,000", image: "/images/Image-16.png", rating: 4 },
+    { id: 16, name: "Solar Panel 550W Mono", category: "solar", description: "High-efficiency monocrystalline solar panel with 25-year performance warranty.", features: ["550W Output", "Monocrystalline", "25yr Warranty", "Hail Resistant"], price: "KES 28,000", image: "/images/Image-17.png", rating: 5 },
+    { id: 17, name: "Lithium Battery 5kWh", category: "solar", description: "Deep-cycle lithium battery with BMS protection and 6000+ cycle life.", features: ["5kWh Capacity", "6000 Cycles", "BMS Protected", "10yr Warranty"], price: "KES 180,000", image: "/images/Image-18.png", rating: 5 },
+    { id: 18, name: "MPPT Solar Controller 60A", category: "solar", description: "Maximum Power Point Tracking controller for optimal solar panel efficiency.", features: ["60A Rating", "MPPT Tech", "LCD Display", "Multi Protection"], price: "KES 35,000", image: "/images/Image-19.png", rating: 5 },
+    { id: 19, name: "pH/EC/TDS Meter Combo", category: "monitoring", description: "Professional 3-in-1 water quality tester with automatic temperature compensation.", features: ["3-in-1 Meter", "Auto Calibration", "Data Logging", "Waterproof"], price: "KES 25,000", image: "/images/Image-20.png", rating: 5 },
+    { id: 20, name: "NPK Soil Test Kit", category: "monitoring", description: "Complete nutrient testing kit for nitrogen, phosphorus, and potassium analysis.", features: ["NPK Testing", "100 Tests", "Color Chart", "Portable Case"], price: "KES 18,000", image: "/images/Image-21.png", rating: 4 },
+    { id: 21, name: "Digital Flow Meter", category: "monitoring", description: "High-accuracy electromagnetic flow meter with data logging and remote reading.", features: ["±0.5% Accuracy", "Data Logging", "Remote Reading", "Battery Powered"], price: "KES 45,000", image: "/images/Image-22.png", rating: 5 },
+    { id: 22, name: "Water Level Logger", category: "monitoring", description: "Submersible pressure sensor for continuous groundwater level monitoring.", features: ["Submersible", "1 Year Battery", "USB Download", "Stainless Steel"], price: "KES 65,000", image: "/images/Image-23.png", rating: 5 },
+    { id: 23, name: "Borehole Camera System", category: "monitoring", description: "Waterproof inspection camera with 100m cable for borehole and well inspection.", features: ["100m Cable", "HD Camera", "LED Lights", "Recording"], price: "KES 120,000", image: "/images/Image-24.png", rating: 5 }
+  ];
+
+  const categories = [
+    { id: 'all', name: 'All Products', icon: <Droplets className="w-5 h-5" /> },
+    { id: 'control', name: 'Smart Controls', icon: <Zap className="w-5 h-5" /> },
+    { id: 'irrigation', name: 'Irrigation', icon: <Droplets className="w-5 h-5" /> },
+    { id: 'solar', name: 'Solar Energy', icon: <Sun className="w-5 h-5" /> },
+    { id: 'monitoring', name: 'Monitoring', icon: <Gauge className="w-5 h-5" /> }
+  ];
+
+  const filteredProducts = selectedCategory === 'all' ? products : products.filter(p => p.category === selectedCategory);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-green-900 to-gray-900">
+    <div className="min-h-screen bg-gray-50">
       <Navbar />
       
-      {/* Hero Section */}
-      <section className="relative h-[25vh] min-h-[200px] bg-gradient-to-br from-gray-900 to-green-900">
-        <div className="absolute inset-0 bg-black/30 z-10" />
-        <div className="relative z-20 h-full flex items-center justify-center pt-8">
+      <section className="relative h-[30vh] min-h-[250px] bg-gradient-to-br from-green-600 to-blue-600 mt-16">
+        <div className="absolute inset-0 bg-black/20 z-10" />
+        <div className="relative z-20 h-full flex items-center justify-center">
           <div className="text-center text-white px-4 max-w-4xl">
             <h1 className="text-3xl md:text-5xl font-bold mb-4">Our Products</h1>
-            <p className="text-lg md:text-xl text-green-100">Hardware and tangible solutions for modern farming</p>
+            <p className="text-lg md:text-xl text-green-100">Professional-grade equipment for modern Kenyan agriculture</p>
           </div>
         </div>
       </section>
 
-      {/* Product Categories */}
-      <section className="py-20">
+      <section className="py-12 bg-gradient-to-r from-green-600 to-blue-600">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="space-y-16">
-            {productCategories.map((category, catIndex) => (
-              <div key={catIndex} className="relative">
-                {/* Category Header */}
-                <div className="flex items-center justify-center mb-12">
-                  <div className="relative">
-                    <div className="w-32 h-32 rounded-full bg-gradient-to-br from-green-600 to-green-800 flex items-center justify-center shadow-2xl border-4 border-green-400/30">
-                      {category.icon}
-                    </div>
-                    <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-white text-gray-900 px-6 py-2 rounded-full shadow-lg">
-                      <h3 className="text-lg font-bold">{category.category}</h3>
-                    </div>
+          <h2 className="text-2xl font-bold text-white text-center mb-8">Why Source Equipment Through Cloudceed?</h2>
+          <div className="grid md:grid-cols-4 gap-6 text-white text-center">
+            <div><CheckCircle className="w-12 h-12 mx-auto mb-3" /><h3 className="font-bold mb-2">Technical Vetting</h3><p className="text-sm">Products tested for Kenyan conditions</p></div>
+            <div><CheckCircle className="w-12 h-12 mx-auto mb-3" /><h3 className="font-bold mb-2">After-Sales Support</h3><p className="text-sm">Installation & warranty coordination</p></div>
+            <div><CheckCircle className="w-12 h-12 mx-auto mb-3" /><h3 className="font-bold mb-2">Local Inventory</h3><p className="text-sm">Fast delivery across Kenya</p></div>
+            <div><CheckCircle className="w-12 h-12 mx-auto mb-3" /><h3 className="font-bold mb-2">Bulk Discounts</h3><p className="text-sm">Special pricing for cooperatives</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-8 bg-white border-b">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-wrap justify-center gap-4">
+            {categories.map((category) => (
+              <button key={category.id} onClick={() => setSelectedCategory(category.id)} className={`flex items-center space-x-2 px-6 py-3 rounded-lg font-semibold transition-all ${selectedCategory === category.id ? 'bg-green-600 text-white shadow-lg scale-105' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}`}>
+                {category.icon}<span>{category.name}</span>
+              </button>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {filteredProducts.map((product) => (
+              <div key={product.id} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+                <div className="relative h-64 bg-gradient-to-br from-gray-100 to-gray-200 overflow-hidden">
+                  <img src={product.image} alt={product.name} className="w-full h-full object-cover hover:scale-110 transition-transform duration-500" />
+                  <div className="absolute top-4 right-4 bg-green-600 text-white px-3 py-1 rounded-full text-sm font-bold">In Stock</div>
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">{product.name}</h3>
+                  <div className="flex items-center mb-3">
+                    {[...Array(5)].map((_, i) => (<Star key={i} className={`w-4 h-4 ${i < product.rating ? 'text-yellow-400 fill-current' : 'text-gray-300'}`} />))}
+                    <span className="text-sm text-gray-600 ml-2">({product.rating}.0)</span>
                   </div>
-                </div>
-
-                {/* Category Description */}
-                <div className="text-center mb-8">
-                  <p className="text-gray-300 text-lg max-w-2xl mx-auto">{category.description}</p>
-                </div>
-
-                {/* Condensed Product Card */}
-                <div className="max-w-4xl mx-auto">
-                  <div className="bg-gray-800/50 backdrop-blur-sm border border-green-500/20 rounded-2xl p-8 hover:bg-green-800/30 transition-all duration-300">
-                    <div className="flex items-center justify-between mb-6">
-                      <div className="flex items-center space-x-4">
-                        <div className="w-16 h-16 rounded-full bg-gradient-to-br from-green-500 to-green-700 flex items-center justify-center">
-                          {category.icon}
-                        </div>
-                        <div>
-                          <h4 className="text-2xl font-bold text-white mb-2">{category.category}</h4>
-                          <p className="text-gray-300">{category.products.length} Products Available</p>
-                        </div>
+                  <p className="text-gray-600 text-sm mb-4 line-clamp-2">{product.description}</p>
+                  <div className="grid grid-cols-2 gap-2 mb-4">
+                    {product.features.map((feature, idx) => (
+                      <div key={idx} className="flex items-center text-xs text-gray-700">
+                        <CheckCircle className="w-3 h-3 text-green-600 mr-1 flex-shrink-0" />
+                        <span className="truncate">{feature}</span>
                       </div>
-                      <button 
-                        onClick={() => setExpandedCategory(expandedCategory === catIndex ? null : catIndex)}
-                        className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors flex items-center"
-                      >
-                        {expandedCategory === catIndex ? 'Hide' : 'View'} Products
-                        <ArrowRight className={`w-4 h-4 ml-2 transition-transform duration-300 ${
-                          expandedCategory === catIndex ? 'rotate-90' : ''
-                        }`} />
-                      </button>
-                    </div>
-
-                    {/* Expanded Product Details */}
-                    {expandedCategory === catIndex && (
-                      <div className="space-y-6 mt-8 pt-8 border-t border-green-500/20">
-                        {category.products.map((product, prodIndex) => (
-                          <div key={prodIndex} className="bg-gray-900/50 rounded-xl p-6 border border-green-500/10">
-                            <div className="flex justify-between items-start mb-4">
-                              <div>
-                                <h5 className="text-xl font-bold text-white mb-2">{product.name}</h5>
-                                <p className="text-gray-300 mb-4">{product.description}</p>
-                                <div className="flex flex-wrap gap-2 mb-4">
-                                  {product.features.map((feature, idx) => (
-                                    <span key={idx} className="bg-green-600/20 text-green-300 px-3 py-1 rounded-full text-sm">
-                                      {feature}
-                                    </span>
-                                  ))}
-                                </div>
-                              </div>
-                              <div className="text-right">
-                                <div className="text-2xl font-bold text-green-400">{product.price}</div>
-                                <div className="flex items-center mt-2">
-                                  {[...Array(5)].map((_, i) => (
-                                    <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
-                                  ))}
-                                </div>
-                              </div>
-                            </div>
-                            <button className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg font-medium transition-colors">
-                              Get Quote
-                            </button>
-                          </div>
-                        ))}
-                      </div>
-                    )}
+                    ))}
+                  </div>
+                  <div className="flex items-center justify-between pt-4 border-t">
+                    <div><p className="text-sm text-gray-500">Price</p><p className="text-2xl font-bold text-green-600">{product.price}</p></div>
+                    <button className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg font-semibold transition-colors flex items-center"><ShoppingCart className="w-4 h-4 mr-2" />Quote</button>
                   </div>
                 </div>
               </div>
@@ -188,27 +116,25 @@ export default function ProductsPage() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-green-600">
+      <section className="py-20 bg-gradient-to-br from-green-600 to-blue-600">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Need Custom Solutions?</h2>
-          <p className="text-xl text-green-100 mb-8 max-w-2xl mx-auto">
-            Our team can design custom solutions tailored to your specific farm requirements and operational needs.
-          </p>
-          <button className="bg-white text-green-700 hover:bg-green-50 px-8 py-3 rounded-lg font-semibold transition-colors">
-            Request Custom Quote
-          </button>
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Need Custom Solutions or Bulk Orders?</h2>
+          <p className="text-xl text-green-100 mb-8 max-w-2xl mx-auto">Contact us for special pricing on cooperative and county projects, or for custom system design.</p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <button onClick={() => window.location.href = '/contact'} className="bg-white text-green-700 hover:bg-green-50 px-8 py-3 rounded-lg font-semibold transition-colors">Request Site Assessment</button>
+            <button className="bg-green-700 hover:bg-green-800 text-white px-8 py-3 rounded-lg font-semibold transition-colors border-2 border-white">Download Product Catalog</button>
+          </div>
         </div>
       </section>
 
-      {/* Footer */}
       <footer className="bg-gray-900 text-white py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="flex items-center space-x-2 mb-4 md:mb-0">
-              <span className="font-semibold">FarmAuto</span>
+              <Droplets className="w-6 h-6 text-green-400" />
+              <span className="font-semibold">Cloudceed Technologies International Ltd</span>
             </div>
-            <p className="text-gray-400">© 2024 Farm Automation & Mechanization. All rights reserved.</p>
+            <p className="text-gray-400">© 2024 Cloudceed Technologies. All rights reserved.</p>
           </div>
         </div>
       </footer>

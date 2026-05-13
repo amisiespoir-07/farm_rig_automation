@@ -11,8 +11,8 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center space-x-2">
-            <Droplets className="w-8 h-8 text-green-600" />
-            <span className="font-bold text-xl text-gray-900">FarmAuto</span>
+            <img src="/images/logo.png" alt="Cloudseed Logo" className="w-8 h-8" />
+            <span className="font-bold text-xl text-gray-900">Cloudseed</span>
           </div>
           
           <div className="hidden md:flex space-x-8">

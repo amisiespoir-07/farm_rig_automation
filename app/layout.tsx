@@ -1,21 +1,10 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
 export const metadata: Metadata = {
-  title: "Farm Automation & Mechanization | Precision Irrigation & Solar Solutions",
-  description: "Modern agricultural solutions including hydrological surveys, smart irrigation systems, and solar-powered farm lighting. Precision automation for the modern agriculturist.",
-  keywords: "farm automation, smart irrigation, hydrological mapping, solar farming, agricultural mechanization",
+  title: "Cloudceed Technologies | Smart Water & Solar Solutions for Kenya & Sub-Saharan Agriculture",
+  description: "Expert hydrological surveying, intelligent irrigation systems, and solar-powered solutions engineered for Kenya and Sub-Saharan Africa's diverse climate zones. PhD-led water resource management.",
+  keywords: "Kenya irrigation, hydrological survey Kenya, solar water pump Kenya, ASAL irrigation, smart farming Kenya, water resource management, flood management Kenya",
 };
 
 export default function RootLayout({
@@ -24,10 +13,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
+    <html lang="en" className="h-full antialiased">
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
   );

@@ -1,15 +1,17 @@
 'use client';
 
 import { useState } from 'react';
-import { Phone, Mail, MapPin, Send, CheckCircle, Clock, MessageSquare } from 'lucide-react';
+import { Phone, Mail, MapPin, Send, CheckCircle, Clock, MessageSquare, Droplets } from 'lucide-react';
 import Navbar from '../../components/Navbar';
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
-    farmLocation: '',
-    service: 'hydrological',
+    email: '',
+    location: '',
+    farmSize: 'small',
+    services: [] as string[],
     message: ''
   });
 
@@ -20,10 +22,16 @@ export default function ContactPage() {
     });
   };
 
+  const handleCheckboxChange = (service: string) => {
+    const updatedServices = formData.services.includes(service)
+      ? formData.services.filter(s => s !== service)
+      : [...formData.services, service];
+    setFormData({ ...formData, services: updatedServices });
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log('Form submitted:', formData);
-    // Handle form submission here
   };
 
   return (
@@ -31,12 +39,12 @@ export default function ContactPage() {
       <Navbar />
       
       {/* Hero Section */}
-      <section className="relative h-[25vh] min-h-[200px] bg-gradient-to-br from-green-600 to-green-800">
+      <section className="relative h-[25vh] min-h-[200px] bg-gradient-to-br from-green-600 to-green-800 mt-16">
         <div className="absolute inset-0 bg-black/30 z-10" />
-        <div className="relative z-20 h-full flex items-center justify-center pt-8">
+        <div className="relative z-20 h-full flex items-center justify-center">
           <div className="text-center text-white px-4 max-w-4xl">
             <h1 className="text-3xl md:text-5xl font-bold mb-4">Get In Touch</h1>
-            <p className="text-lg md:text-xl text-green-100">Ready to automate your farm? Let's discuss your needs</p>
+            <p className="text-lg md:text-xl text-green-100">Ready to transform your farm? Let's discuss your specific needs</p>
           </div>
         </div>
       </section>
@@ -69,34 +77,70 @@ export default function ContactPage() {
                     onChange={handleInputChange}
                     required
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                    placeholder="Your phone number"
+                    placeholder="e.g., +254 7XX XXX XXX"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Farm Location *</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Email *</label>
                   <input
-                    type="text"
-                    name="farmLocation"
-                    value={formData.farmLocation}
+                    type="email"
+                    name="email"
+                    value={formData.email}
                     onChange={handleInputChange}
                     required
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                    placeholder="Your farm location"
+                    placeholder="Your email address"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Service of Interest *</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Farm/Business Location *</label>
+                  <input
+                    type="text"
+                    name="location"
+                    value={formData.location}
+                    onChange={handleInputChange}
+                    required
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                    placeholder="County and specific area (e.g., Machakos County, Katangi)"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Size of Operation *</label>
                   <select
-                    name="service"
-                    value={formData.service}
+                    name="farmSize"
+                    value={formData.farmSize}
                     onChange={handleInputChange}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
                   >
-                    <option value="hydrological">Hydrological Survey</option>
-                    <option value="irrigation">Irrigation Automation</option>
-                    <option value="solar">Solar Solutions</option>
-                    <option value="multiple">Multiple Services</option>
+                    <option value="small">Small-scale (&lt;2 acres)</option>
+                    <option value="medium">Medium (2-10 acres)</option>
+                    <option value="large">Large (10-50 acres)</option>
+                    <option value="commercial">Commercial (50+ acres)</option>
                   </select>
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Service of Interest *</label>
+                  <div className="space-y-2">
+                    {[
+                      'Hydrological Survey & Water Assessment',
+                      'Smart Irrigation System Design',
+                      'Solar Water Pump Installation',
+                      'Complete Farm Automation',
+                      'Flood Risk Assessment',
+                      'Solar Electrification',
+                      'Product Purchase Inquiry'
+                    ].map((service) => (
+                      <label key={service} className="flex items-center">
+                        <input
+                          type="checkbox"
+                          checked={formData.services.includes(service)}
+                          onChange={() => handleCheckboxChange(service)}
+                          className="mr-2"
+                        />
+                        <span className="text-gray-700">{service}</span>
+                      </label>
+                    ))}
+                  </div>
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">Additional Message</label>
@@ -106,7 +150,7 @@ export default function ContactPage() {
                     onChange={handleInputChange}
                     rows={4}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                    placeholder="Tell us more about your requirements..."
+                    placeholder="Tell us about your current challenges, water sources, power situation, and goals..."
                   />
                 </div>
                 <button
@@ -125,15 +169,15 @@ export default function ContactPage() {
                 <div className="space-y-4">
                   <div className="flex items-center text-gray-600">
                     <Phone className="w-5 h-5 mr-3 text-green-600" />
-                    <span>+1 (555) 123-4567</span>
+                    <span>+254 712 960 060</span>
                   </div>
                   <div className="flex items-center text-gray-600">
                     <Mail className="w-5 h-5 mr-3 text-green-600" />
-                    <span>info@farmautomation.com</span>
+                    <span>Cloudceedtech@yahoo.com</span>
                   </div>
                   <div className="flex items-center text-gray-600">
                     <MapPin className="w-5 h-5 mr-3 text-green-600" />
-                    <span>123 Agricultural Way, Farm City, FC 12345</span>
+                    <span>Nairobi, Kenya (Serving all counties)</span>
                   </div>
                 </div>
               </div>
@@ -143,15 +187,15 @@ export default function ContactPage() {
                 <div className="space-y-3">
                   <div className="flex items-center justify-between text-gray-600">
                     <span>Monday - Friday</span>
-                    <span>8:00 AM - 6:00 PM</span>
+                    <span>8:00 AM - 5:00 PM EAT</span>
                   </div>
                   <div className="flex items-center justify-between text-gray-600">
                     <span>Saturday</span>
-                    <span>9:00 AM - 4:00 PM</span>
+                    <span>9:00 AM - 1:00 PM EAT</span>
                   </div>
                   <div className="flex items-center justify-between text-gray-600">
                     <span>Sunday</span>
-                    <span>Closed</span>
+                    <span>Closed (Emergency support available)</span>
                   </div>
                 </div>
               </div>
@@ -164,7 +208,7 @@ export default function ContactPage() {
                       <MessageSquare className="w-5 h-5 mr-2 text-green-600" />
                       <h4 className="font-semibold text-gray-900">Technical Support</h4>
                     </div>
-                    <p className="text-gray-600 text-sm mb-3">Need help with existing systems? Our technical team is here to assist you.</p>
+                    <p className="text-gray-600 text-sm mb-3">Already have a system? Our technical team provides remote troubleshooting, on-site maintenance, and system optimization.</p>
                     <button className="text-green-600 hover:text-green-700 font-medium text-sm">
                       View FAQ & Maintenance Guides →
                     </button>
@@ -174,12 +218,23 @@ export default function ContactPage() {
                       <Clock className="w-5 h-5 mr-2 text-blue-600" />
                       <h4 className="font-semibold text-gray-900">Emergency Support</h4>
                     </div>
-                    <p className="text-gray-600 text-sm mb-3">24/7 emergency support available for critical system failures.</p>
+                    <p className="text-gray-600 text-sm mb-3">24/7 emergency hotline for existing clients. Rapid response within 24-48 hours with spare parts inventory in Nairobi.</p>
                     <button className="text-blue-600 hover:text-blue-700 font-medium text-sm">
-                      Call Emergency Line →
+                      Call Emergency Line: +254 712 960 060 →
                     </button>
                   </div>
                 </div>
+              </div>
+
+              <div className="bg-gradient-to-br from-green-600 to-blue-600 rounded-lg p-6 text-white">
+                <h3 className="text-xl font-bold mb-3">After-Sales Support</h3>
+                <ul className="space-y-2 text-sm">
+                  <li>✓ Installation and commissioning</li>
+                  <li>✓ Staff training on system operation</li>
+                  <li>✓ Maintenance contracts available</li>
+                  <li>✓ 24/7 emergency technical support</li>
+                  <li>✓ Warranty honored nationwide</li>
+                </ul>
               </div>
             </div>
           </div>
@@ -197,15 +252,23 @@ export default function ContactPage() {
           <div className="max-w-3xl mx-auto space-y-6">
             <div className="bg-gray-50 rounded-lg p-6">
               <h3 className="text-lg font-semibold text-gray-900 mb-3">How long does a hydrological survey take?</h3>
-              <p className="text-gray-600">Typically 2-3 weeks depending on the size of your property and complexity of the terrain.</p>
+              <p className="text-gray-600">Typically 2-3 weeks depending on the size of your property and complexity of the terrain. We use advanced HEC-RAS and GIS technology for accurate results.</p>
             </div>
             <div className="bg-gray-50 rounded-lg p-6">
               <h3 className="text-lg font-semibold text-gray-900 mb-3">Do you offer financing options?</h3>
-              <p className="text-gray-600">Yes, we work with several agricultural financing companies to offer flexible payment plans.</p>
+              <p className="text-gray-600">Yes, we work with several agricultural financing companies to offer flexible payment plans. We can also provide ROI analysis to help with financing applications.</p>
             </div>
             <div className="bg-gray-50 rounded-lg p-6">
               <h3 className="text-lg font-semibold text-gray-900 mb-3">What kind of warranty do your products have?</h3>
-              <p className="text-gray-600">All our products come with a minimum 2-year warranty, with extended options available.</p>
+              <p className="text-gray-600">All our products come with manufacturer warranties (typically 2-5 years). Solar panels have 25-year warranties. We honor all warranties nationwide and provide local support.</p>
+            </div>
+            <div className="bg-gray-50 rounded-lg p-6">
+              <h3 className="text-lg font-semibold text-gray-900 mb-3">Can you work in ASAL regions?</h3>
+              <p className="text-gray-600">Absolutely! We specialize in arid and semi-arid land solutions. Our team has extensive experience in Lower Eastern Kenya and other ASAL regions.</p>
+            </div>
+            <div className="bg-gray-50 rounded-lg p-6">
+              <h3 className="text-lg font-semibold text-gray-900 mb-3">Do you provide training for farm staff?</h3>
+              <p className="text-gray-600">Yes, comprehensive training is included with all system installations. We also offer refresher courses and ongoing technical support.</p>
             </div>
           </div>
         </div>
@@ -216,9 +279,10 @@ export default function ContactPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="flex items-center space-x-2 mb-4 md:mb-0">
-              <span className="font-semibold">FarmAuto</span>
+              <Droplets className="w-6 h-6 text-green-400" />
+              <span className="font-semibold">Cloudceed Technologies International Ltd</span>
             </div>
-            <p className="text-gray-400">© 2024 Farm Automation & Mechanization. All rights reserved.</p>
+            <p className="text-gray-400">© 2024 Cloudceed Technologies. All rights reserved.</p>
           </div>
         </div>
       </footer>
