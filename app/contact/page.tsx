@@ -49,6 +49,123 @@ export default function ContactPage() {
         </div>
       </section>
 
+
+      {/* About Cloudceed Section */}
+      <section id="about" className="py-20 bg-gradient-to-br from-green-50 to-blue-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">About Cloudceed Technologies International Ltd</h2>
+            <p className="text-xl text-green-600 font-semibold">Bridging Advanced Science with Practical Farm Solutions</p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-12 mb-12">
+            {/* Our Story */}
+            <div className="bg-white rounded-xl shadow-lg p-8">
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">Our Story</h3>
+              <p className="text-gray-700 mb-4">
+                Cloudceed was established in 2017 by <span className="font-semibold text-green-600">Wellington Wambua Musyoka</span>, a certified hydrologist and PhD researcher at Southeast University, China. What began as a solar water pump installation venture in Lower Eastern Kenya has evolved into a full-service water and energy solutions provider, combining field experience with cutting-edge research.
+              </p>
+              <p className="text-gray-700 mb-4">
+                With over 5 years of experience in Kenya's water sector, including roles at the Ministry of Water and Sanitation and as a solar project manager, we understand the unique challenges facing farmers:
+              </p>
+              <ul className="space-y-2 text-gray-700">
+                <li className="flex items-start">
+                  <span className="text-green-600 mr-2">●</span>
+                  <span>Unpredictable rainfall and frequent droughts</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-green-600 mr-2">●</span>
+                  <span>Rising electricity costs and unreliable grid power</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-green-600 mr-2">●</span>
+                  <span>Limited technical expertise in modern farming</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-green-600 mr-2">●</span>
+                  <span>Need for sustainable, cost-effective solutions</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Our Mission & Approach */}
+            <div className="space-y-6">
+              <div className="bg-white rounded-xl shadow-lg p-8">
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">Our Mission</h3>
+                <p className="text-gray-700">
+                  To empower farmers with scientifically-sound, technology-driven water and energy solutions that increase productivity, reduce costs, and promote environmental sustainability.
+                </p>
+              </div>
+
+              <div className="bg-white rounded-xl shadow-lg p-8">
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">Our Approach</h3>
+                <div className="space-y-3">
+                  <div>
+                    <h4 className="font-semibold text-green-600 mb-1">1. Science-Based</h4>
+                    <p className="text-gray-700 text-sm">Every solution starts with proper data, hydrological surveys, soil analysis, and climate assessment</p>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-green-600 mb-1">2. Technology-Enabled</h4>
+                    <p className="text-gray-700 text-sm">We leverage advanced modelling software, IoT sensors, and mobile connectivity</p>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-green-600 mb-1">3. Locally Adapted</h4>
+                    <p className="text-gray-700 text-sm">Solutions designed for Kenya's diverse climates, from coastal regions to highlands to ASAL areas</p>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-green-600 mb-1">4. Sustainable</h4>
+                    <p className="text-gray-700 text-sm">Focus on water conservation, renewable energy, and long-term viability</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Credentials & Recognition */}
+          <div className="bg-gradient-to-br from-gray-900 to-green-900 rounded-xl shadow-2xl p-8 text-white mb-12">
+            <h3 className="text-2xl font-bold mb-6 text-center">Credentials & Recognition</h3>
+            <div className="grid md:grid-cols-2 gap-6">
+              <div>
+                <h4 className="font-semibold text-green-400 mb-3">Academic Qualifications:</h4>
+                <ul className="space-y-2 text-sm">
+                  <li>• PhD Candidate in Civil Engineering – Intelligent Construction and Operations Management (Southeast University, China)</li>
+                  <li>• Master of Engineering in Hydrology and Water Resources Engineering (Hohai University, China)</li>
+                  <li>• Bachelor of Science in Meteorology (University of Nairobi)</li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-semibold text-green-400 mb-3">Professional Certifications:</h4>
+                <ul className="space-y-2 text-sm">
+                  <li>• Certified Floodplain Manager (CFM)</li>
+                  <li>• Member: International Association of Hydrological Sciences</li>
+                  <li>• Member: Hydrologist's Society of Kenya</li>
+                  <li>• Published researcher with 3+ peer-reviewed publications</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          {/* Partnerships */}
+          <div className="bg-white rounded-xl shadow-lg p-8 mb-8">
+            <h3 className="text-2xl font-bold text-gray-900 mb-4 text-center">Partnerships</h3>
+            <p className="text-gray-700 text-center mb-6">
+              We collaborate with leading Chinese manufacturers for cost-effective equipment, local county governments for water projects, and international organizations (UNDP, IAEA) on water security initiatives.
+            </p>
+            <div className="flex flex-wrap justify-center gap-4">
+              <button className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors">
+                Meet Our Team
+              </button>
+              <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors">
+                View Our Projects
+              </button>
+              <button className="bg-gray-700 hover:bg-gray-800 text-white px-6 py-3 rounded-lg font-semibold transition-colors">
+                Download Company Profile
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+      
       {/* Contact Form Section */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -241,6 +358,7 @@ export default function ContactPage() {
         </div>
       </section>
 
+
       {/* FAQ Section */}
       <section id="faq" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -278,8 +396,8 @@ export default function ContactPage() {
       <footer className="bg-gray-900 text-white py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="flex items-center space-x-2 mb-4 md:mb-0">
-              <Droplets className="w-6 h-6 text-green-400" />
+            <div className="flex items-center space-x-3 mb-4 md:mb-0">
+              <img src="/images/logo.png" alt="Cloudceed Technologies" className="h-10 w-auto" />
               <span className="font-semibold">Cloudceed Technologies International Ltd</span>
             </div>
             <p className="text-gray-400">© 2024 Cloudceed Technologies. All rights reserved.</p>

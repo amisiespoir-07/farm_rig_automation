@@ -107,7 +107,15 @@ export default function ProductsPage() {
                   </div>
                   <div className="flex items-center justify-between pt-4 border-t">
                     <div><p className="text-sm text-gray-500">Price</p><p className="text-2xl font-bold text-green-600">{product.price}</p></div>
-                    <button className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg font-semibold transition-colors flex items-center"><ShoppingCart className="w-4 h-4 mr-2" />Quote</button>
+                    <button 
+                      onClick={() => {
+                        const message = `Hello, I'm interested in the ${product.name} (${product.price}). Please provide more information.`;
+                        window.open(`https://wa.me/254712960060?text=${encodeURIComponent(message)}`, '_blank');
+                      }}
+                      className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg font-semibold transition-colors flex items-center"
+                    >
+                      <ShoppingCart className="w-4 h-4 mr-2" />Contact Us
+                    </button>
                   </div>
                 </div>
               </div>
@@ -130,8 +138,8 @@ export default function ProductsPage() {
       <footer className="bg-gray-900 text-white py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="flex items-center space-x-2 mb-4 md:mb-0">
-              <Droplets className="w-6 h-6 text-green-400" />
+            <div className="flex items-center space-x-3 mb-4 md:mb-0">
+              <img src="/images/logo.png" alt="Cloudceed Technologies" className="h-10 w-auto" />
               <span className="font-semibold">Cloudceed Technologies International Ltd</span>
             </div>
             <p className="text-gray-400">© 2024 Cloudceed Technologies. All rights reserved.</p>
