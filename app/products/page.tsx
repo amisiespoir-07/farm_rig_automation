@@ -23,14 +23,14 @@ export default function ProductsPage() {
     { id: 13, name: "Solar Farm System 10kW", category: "solar", description: "Commercial-grade system for processing facilities, cold storage, and heavy machinery.", features: ["10kW Output", "3-Phase", "Grid Tie Option", "Professional Install"], price: "KES 850,000", image: "/images/Image-14.png", rating: 5 },
     { id: 14, name: "Solar Floodlight 100W", category: "solar", description: "High-intensity LED floodlight with motion sensor and 3-day battery autonomy.", features: ["100W LED", "Motion Sensor", "3 Day Battery", "Weatherproof IP66"], price: "KES 25,000", image: "/images/Image-15.png", rating: 5 },
     { id: 15, name: "Solar Street Light 60W", category: "solar", description: "All-in-one solar street light with dusk-to-dawn sensor. Perfect for farm pathways.", features: ["60W LED", "Auto On/Off", "5 Day Battery", "Easy Install"], price: "KES 18,000", image: "/images/Image-16.png", rating: 4 },
-    { id: 16, name: "Solar Panel 550W Mono", category: "solar", description: "High-efficiency monocrystalline solar panel with 25-year performance warranty.", features: ["550W Output", "Monocrystalline", "25yr Warranty", "Hail Resistant"], price: "KES 28,000", image: "/images/Image-17.png", rating: 5 },
     { id: 17, name: "Lithium Battery 5kWh", category: "solar", description: "Deep-cycle lithium battery with BMS protection and 6000+ cycle life.", features: ["5kWh Capacity", "6000 Cycles", "BMS Protected", "10yr Warranty"], price: "KES 180,000", image: "/images/Image-18.png", rating: 5 },
-    { id: 18, name: "MPPT Solar Controller 60A", category: "solar", description: "Maximum Power Point Tracking controller for optimal solar panel efficiency.", features: ["60A Rating", "MPPT Tech", "LCD Display", "Multi Protection"], price: "KES 35,000", image: "/images/Image-19.png", rating: 5 },
     { id: 19, name: "pH/EC/TDS Meter Combo", category: "monitoring", description: "Professional 3-in-1 water quality tester with automatic temperature compensation.", features: ["3-in-1 Meter", "Auto Calibration", "Data Logging", "Waterproof"], price: "KES 25,000", image: "/images/Image-20.png", rating: 5 },
     { id: 20, name: "NPK Soil Test Kit", category: "monitoring", description: "Complete nutrient testing kit for nitrogen, phosphorus, and potassium analysis.", features: ["NPK Testing", "100 Tests", "Color Chart", "Portable Case"], price: "KES 18,000", image: "/images/Image-21.png", rating: 4 },
     { id: 21, name: "Digital Flow Meter", category: "monitoring", description: "High-accuracy electromagnetic flow meter with data logging and remote reading.", features: ["±0.5% Accuracy", "Data Logging", "Remote Reading", "Battery Powered"], price: "KES 45,000", image: "/images/Image-22.png", rating: 5 },
     { id: 22, name: "Water Level Logger", category: "monitoring", description: "Submersible pressure sensor for continuous groundwater level monitoring.", features: ["Submersible", "1 Year Battery", "USB Download", "Stainless Steel"], price: "KES 65,000", image: "/images/Image-23.png", rating: 5 },
-    { id: 23, name: "Borehole Camera System", category: "monitoring", description: "Waterproof inspection camera with 100m cable for borehole and well inspection.", features: ["100m Cable", "HD Camera", "LED Lights", "Recording"], price: "KES 120,000", image: "/images/Image-24.png", rating: 5 }
+    { id: 23, name: "Borehole Camera System", category: "monitoring", description: "Waterproof inspection camera with 100m cable for borehole and well inspection.", features: ["100m Cable", "HD Camera", "LED Lights", "Recording"], price: "KES 120,000", image: "/images/Image-24.png", rating: 5 },
+    { id: 24, name: "Water Well Drilling Rigs", category: "equipment", description: "Reliable borehole drilling equipment engineered for Kenya's diverse geological conditions, from rocky highlands to sandy ASAL regions.", features: ["Up to 450m Depth", "Crawler & Trailer", "Air/Mud Compatible", "Rugged Design"], price: "Request Quote", image: "/images/drill.png", rating: 5 },
+    { id: 25, name: "Compact Mini-Excavators", category: "equipment", description: "Versatile earth-moving machines designed for efficient farm development, irrigation trenching, and land preparation in confined spaces.", features: ["2.5m Digging Depth", "Low Ground Pressure", "Quick-Change Buckets", "Fuel Efficient"], price: "Request Quote", image: "/images/image-27.jpeg", rating: 5 }
   ];
 
   const categories = [
@@ -38,7 +38,8 @@ export default function ProductsPage() {
     { id: 'control', name: 'Smart Controls', icon: <Zap className="w-5 h-5" /> },
     { id: 'irrigation', name: 'Irrigation', icon: <Droplets className="w-5 h-5" /> },
     { id: 'solar', name: 'Solar Energy', icon: <Sun className="w-5 h-5" /> },
-    { id: 'monitoring', name: 'Monitoring', icon: <Gauge className="w-5 h-5" /> }
+    { id: 'monitoring', name: 'Monitoring', icon: <Gauge className="w-5 h-5" /> },
+    { id: 'equipment', name: 'Heavy Equipment', icon: <Gauge className="w-5 h-5" /> }
   ];
 
   const filteredProducts = selectedCategory === 'all' ? products : products.filter(p => p.category === selectedCategory);
@@ -114,7 +115,8 @@ export default function ProductsPage() {
                       }}
                       className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg font-semibold transition-colors flex items-center"
                     >
-                      <ShoppingCart className="w-4 h-4 mr-2" />Contact Us
+                      <ShoppingCart className="w-4 h-4 mr-2" />
+                      {product.price === "Request Quote" ? "Get Quote" : "Contact Us"}
                     </button>
                   </div>
                 </div>
