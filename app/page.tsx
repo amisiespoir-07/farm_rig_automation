@@ -101,6 +101,50 @@ const products = [
 export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [hoveredService, setHoveredService] = useState<number | null>(null);
+  const [formData, setFormData] = useState({
+    name: '',
+    phone: '',
+    email: '',
+    location: '',
+    farmSize: 'small',
+    services: [] as string[],
+    message: ''
+  });
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleCheckboxChange = (service: string) => {
+    const updatedServices = formData.services.includes(service)
+      ? formData.services.filter(s => s !== service)
+      : [...formData.services, service];
+    setFormData({ ...formData, services: updatedServices });
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    const subject = `New Inquiry from ${formData.name}`;
+    const body = `
+Name: ${formData.name}
+Phone: ${formData.phone}
+Email: ${formData.email}
+Location: ${formData.location}
+Farm Size: ${formData.farmSize}
+
+Services of Interest:
+${formData.services.join(', ')}
+
+Message:
+${formData.message}
+    `.trim();
+    
+    window.location.href = `mailto:Cloudceedtechltd@yahoo.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  };
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -552,56 +596,56 @@ export default function Home() {
 
           <div className="grid md:grid-cols-2 gap-12">
             <div>
-              <form className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">Name *</label>
-                  <input type="text" placeholder="Your full name" className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent" />
+                  <input type="text" name="name" value={formData.name} onChange={handleInputChange} placeholder="Your full name" className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent" required />
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">Phone *</label>
-                  <input type="tel" placeholder="e.g., +254 7XX XXX XXX" className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent" />
+                  <input type="tel" name="phone" value={formData.phone} onChange={handleInputChange} placeholder="e.g., +254 7XX XXX XXX" className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent" required />
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">Email *</label>
-                  <input type="email" placeholder="Your email address" className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent" />
+                  <input type="email" name="email" value={formData.email} onChange={handleInputChange} placeholder="Your email address" className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent" required />
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">Farm/Business Location *</label>
-                  <input type="text" placeholder="County and specific area (e.g., Machakos County, Katangi)" className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent" />
+                  <input type="text" name="location" value={formData.location} onChange={handleInputChange} placeholder="County and specific area (e.g., Machakos County, Katangi)" className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent" required />
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">Size of Operation *</label>
-                  <select className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent">
-                    <option>Small-scale (&lt;2 acres)</option>
-                    <option>Medium (2-10 acres)</option>
-                    <option>Large (10-50 acres)</option>
-                    <option>Commercial (50+ acres)</option>
+                  <select name="farmSize" value={formData.farmSize} onChange={handleInputChange} className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent">
+                    <option value="small">Small-scale (&lt;2 acres)</option>
+                    <option value="medium">Medium (2-10 acres)</option>
+                    <option value="large">Large (10-50 acres)</option>
+                    <option value="commercial">Commercial (50+ acres)</option>
                   </select>
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">Service of Interest *</label>
                   <div className="space-y-2">
-                    <label className="flex items-center">
-                      <input type="checkbox" className="mr-2" />
-                      <span className="text-gray-700">Hydrological Survey & Water Assessment</span>
-                    </label>
-                    <label className="flex items-center">
-                      <input type="checkbox" className="mr-2" />
-                      <span className="text-gray-700">Smart Irrigation System Design</span>
-                    </label>
-                    <label className="flex items-center">
-                      <input type="checkbox" className="mr-2" />
-                      <span className="text-gray-700">Solar Water Pump Installation</span>
-                    </label>
-                    <label className="flex items-center">
-                      <input type="checkbox" className="mr-2" />
-                      <span className="text-gray-700">Flood Risk Assessment</span>
-                    </label>
+                    {[
+                      'Hydrological Survey & Water Assessment',
+                      'Smart Irrigation System Design',
+                      'Solar Water Pump Installation',
+                      'Flood Risk Assessment'
+                    ].map((service) => (
+                      <label key={service} className="flex items-center">
+                        <input
+                          type="checkbox"
+                          checked={formData.services.includes(service)}
+                          onChange={() => handleCheckboxChange(service)}
+                          className="mr-2"
+                        />
+                        <span className="text-gray-700">{service}</span>
+                      </label>
+                    ))}
                   </div>
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">Additional Message</label>
-                  <textarea rows={4} placeholder="Tell us about your current challenges, water sources, power situation, and goals..." className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"></textarea>
+                  <textarea name="message" value={formData.message} onChange={handleInputChange} rows={4} placeholder="Tell us about your current challenges, water sources, power situation, and goals..." className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"></textarea>
                 </div>
                 <button type="submit" className="w-full bg-green-600 hover:bg-green-700 text-white py-3 rounded-lg font-semibold transition-colors">
                   Submit Inquiry
@@ -623,9 +667,22 @@ export default function Home() {
                   </div>
                   <div className="flex items-center text-gray-600">
                     <MapPin className="w-5 h-5 mr-3 text-green-600" />
-                    <span>Nairobi, Kenya (Serving all counties)</span>
+                    <span>P.O Box 245, 90300, Makindu Road, Wote, Kenya</span>
                   </div>
                 </div>
+              </div>
+
+              <div className="bg-gray-200 rounded-lg overflow-hidden h-64">
+                <iframe 
+                  src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3987.7242018644934!2d37.662369476796556!3d-1.856439036518848!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMcKwNTEnMjMuMiJTIDM3wrMDM5JzUzLjgiRU!5e0!3m2!1sen!2s!4v1780854605581!5m2!1sen!2s" 
+                  width="100%" 
+                  height="100%" 
+                  style={{ border: 0 }} 
+                  allowFullScreen 
+                  loading="lazy" 
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Cloudceed Location"
+                />
               </div>
 
               <div>

@@ -31,7 +31,23 @@ export default function ContactPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
+    
+    const subject = `New Inquiry from ${formData.name}`;
+    const body = `
+Name: ${formData.name}
+Phone: ${formData.phone}
+Email: ${formData.email}
+Location: ${formData.location}
+Farm Size: ${formData.farmSize}
+
+Services of Interest:
+${formData.services.join(', ')}
+
+Message:
+${formData.message}
+    `.trim();
+    
+    window.location.href = `mailto:Cloudceedtechltd@yahoo.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   };
 
   return (
@@ -294,9 +310,22 @@ export default function ContactPage() {
                   </div>
                   <div className="flex items-center text-gray-600">
                     <MapPin className="w-5 h-5 mr-3 text-green-600" />
-                    <span>Nairobi, Kenya (Serving all counties)</span>
+                    <span>P.O Box 245, 90300, Makindu Road, Wote, Kenya</span>
                   </div>
                 </div>
+              </div>
+
+              <div className="bg-gray-200 rounded-lg overflow-hidden h-64">
+                <iframe 
+                  src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3987.7242018644934!2d37.662369476796556!3d-1.856439036518848!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMcKwNTEnMjMuMiJTIDM3wrMDM5JzUzLjgiRU!5e0!3m2!1sen!2s!4v1780854605581!5m2!1sen!2s" 
+                  width="100%" 
+                  height="100%" 
+                  style={{ border: 0 }} 
+                  allowFullScreen 
+                  loading="lazy" 
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Cloudceed Location"
+                />
               </div>
 
               <div>
