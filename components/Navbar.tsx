@@ -45,4 +45,3 @@ export default function Navbar() {
     </nav>
   );
 }
-https://s2.trojanflare.one/clashx/01926185-648e-4f11-b861-cdbd437f9ee5
