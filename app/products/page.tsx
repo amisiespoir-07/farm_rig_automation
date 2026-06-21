@@ -137,14 +137,15 @@ export default function ProductsPage() {
         </div>
       </section>
 
+    {/* Footer */}
       <footer className="bg-gray-900 text-white py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="flex items-center space-x-3 mb-4 md:mb-0">
               <img src="/images/logo.png" alt="Cloudceed Technologies" className="h-10 w-auto" />
-              <span className="font-semibold">Cloudceed Technologies International Ltd</span>
+              <span className="font-semibold">Cloudceed & Technologies International Ltd</span>
             </div>
-            <p className="text-gray-400">© 2024 Cloudceed Technologies. All rights reserved.</p>
+            <p className="text-gray-400">© {new Date().getFullYear()} Cloudceed & Technologies. All rights reserved.</p>
           </div>
         </div>
       </footer>

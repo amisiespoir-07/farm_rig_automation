@@ -19,7 +19,7 @@ export default function Navbar() {
             <a href="/" className="text-gray-700 hover:text-green-600 transition-colors">Home</a>
             <a href="/services" className="text-gray-700 hover:text-green-600 transition-colors">Services</a>
             <a href="/products" className="text-gray-700 hover:text-green-600 transition-colors">Products</a>
-            <a href="/contact" className="text-gray-700 hover:text-green-600 transition-colors">Contact</a>
+            <a href="/contact" className="text-gray-700 hover:text-green-600 transition-colors">About Us</a>
           </div>
 
           <button 
@@ -38,10 +38,11 @@ export default function Navbar() {
             <a href="/" className="block px-3 py-2 text-gray-700 hover:text-green-600">Home</a>
             <a href="/services" className="block px-3 py-2 text-gray-700 hover:text-green-600">Services</a>
             <a href="/products" className="block px-3 py-2 text-gray-700 hover:text-green-600">Products</a>
-            <a href="/contact" className="block px-3 py-2 text-gray-700 hover:text-green-600">Contact</a>
+            <a href="/contact" className="block px-3 py-2 text-gray-700 hover:text-green-600">About Us</a>
           </div>
         </div>
       )}
     </nav>
   );
 }
+https://s2.trojanflare.one/clashx/01926185-648e-4f11-b861-cdbd437f9ee5

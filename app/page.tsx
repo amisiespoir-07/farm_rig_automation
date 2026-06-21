@@ -232,45 +232,7 @@ ${formData.message}
         </div>
       </section>
 
-      {/* Key Value Propositions Section */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="text-center p-6 bg-gradient-to-br from-green-50 to-blue-50 rounded-xl hover:shadow-lg transition-shadow">
-              <div className="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                <CheckCircle className="w-8 h-8 text-white" />
-              </div>
-              <h3 className="text-lg font-bold text-gray-900 mb-2">PhD Researcher</h3>
-              <p className="text-gray-600 text-sm">Intelligent Water Systems, Southeast University</p>
-            </div>
-            
-            <div className="text-center p-6 bg-gradient-to-br from-blue-50 to-green-50 rounded-xl hover:shadow-lg transition-shadow">
-              <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                <CheckCircle className="w-8 h-8 text-white" />
-              </div>
-              <h3 className="text-lg font-bold text-gray-900 mb-2">Presidential Task Force</h3>
-              <p className="text-gray-600 text-sm">Big-4 Water Security Initiative Member</p>
-            </div>
-            
-            <div className="text-center p-6 bg-gradient-to-br from-green-50 to-blue-50 rounded-xl hover:shadow-lg transition-shadow">
-              <div className="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                <CheckCircle className="w-8 h-8 text-white" />
-              </div>
-              <h3 className="text-lg font-bold text-gray-900 mb-2">Embassy-Certified</h3>
-              <p className="text-gray-600 text-sm">Technical Consultant (KESCA Focal Person)</p>
-            </div>
-            
-            <div className="text-center p-6 bg-gradient-to-br from-blue-50 to-green-50 rounded-xl hover:shadow-lg transition-shadow">
-              <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                <CheckCircle className="w-8 h-8 text-white" />
-              </div>
-              <h3 className="text-lg font-bold text-gray-900 mb-2">5+ Years Experience</h3>
-              <p className="text-gray-600 text-sm">Transforming Kenyan Agriculture</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
+      
       {/* Our Impact Section */}
       <section className="py-20 bg-gradient-to-br from-gray-50 to-green-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -585,6 +547,44 @@ ${formData.message}
         </div>
       </section>
 
+{/* Key Value Propositions Section */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="text-center p-6 bg-gradient-to-br from-green-50 to-blue-50 rounded-xl hover:shadow-lg transition-shadow">
+              <div className="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <CheckCircle className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="text-lg font-bold text-gray-900 mb-2">PhD Researcher</h3>
+              <p className="text-gray-600 text-sm">Intelligent Water Systems, Southeast University</p>
+            </div>
+            
+            <div className="text-center p-6 bg-gradient-to-br from-blue-50 to-green-50 rounded-xl hover:shadow-lg transition-shadow">
+              <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <CheckCircle className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="text-lg font-bold text-gray-900 mb-2">Presidential Task Force</h3>
+              <p className="text-gray-600 text-sm">Big-4 Water Security Initiative Member</p>
+            </div>
+            
+            <div className="text-center p-6 bg-gradient-to-br from-green-50 to-blue-50 rounded-xl hover:shadow-lg transition-shadow">
+              <div className="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <CheckCircle className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="text-lg font-bold text-gray-900 mb-2">Embassy-Certified</h3>
+              <p className="text-gray-600 text-sm">Technical Consultant (KESCA Focal Person)</p>
+            </div>
+            
+            <div className="text-center p-6 bg-gradient-to-br from-blue-50 to-green-50 rounded-xl hover:shadow-lg transition-shadow">
+              <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <CheckCircle className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="text-lg font-bold text-gray-900 mb-2">5+ Years Experience</h3>
+              <p className="text-gray-600 text-sm">Transforming Kenyan Agriculture</p>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Contact Section */}
       <section id="contact" className="py-20 bg-gray-50">
@@ -663,7 +663,7 @@ ${formData.message}
                   </div>
                   <div className="flex items-center text-gray-600">
                     <Mail className="w-5 h-5 mr-3 text-green-600" />
-                    <span>Cloudceedtech@yahoo.com</span>
+                    <span>Cloudceedtechltd@yahoo.com</span>
                   </div>
                   <div className="flex items-center text-gray-600">
                     <MapPin className="w-5 h-5 mr-3 text-green-600" />
@@ -716,9 +716,9 @@ ${formData.message}
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="flex items-center space-x-3 mb-4 md:mb-0">
               <img src="/images/logo.png" alt="Cloudceed Technologies" className="h-10 w-auto" />
-              <span className="font-semibold">Cloudceed Technologies International Ltd</span>
+              <span className="font-semibold">Cloudceed & Technologies International Ltd</span>
             </div>
-            <p className="text-gray-400">© 2024 Cloudceed Technologies. All rights reserved.</p>
+            <p className="text-gray-400">© {new Date().getFullYear()} Cloudceed & Technologies. All rights reserved.</p>
           </div>
         </div>
       </footer>
